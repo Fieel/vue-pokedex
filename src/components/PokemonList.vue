@@ -1,37 +1,62 @@
 <template>
-<div class="PokemonList"> 
-  <h1>List:</h1>
-  <ul>
-    <li v-for="item in pokemonList" :key="item.name">
-      {{ item.name }}
-    </li>
-  </ul>
-</div>
+
+  <div v-if="pokemonList" class="PokemonList">
+    <ul>
+      <li
+      @click="changePokemon(item.name)"
+      v-for="(item, index) in pokemonList"
+      :key="item.name">
+        #{{ index }}: {{ item.name }}
+      </li>
+    </ul>
+  </div>
+
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import axios from 'axios';
 
-@Component
-export default class PokemonList extends Vue {
+  import { Component, Prop, Vue } from 'vue-property-decorator';
+  import axios from 'axios';
+  import {
+    State,
+    Getter,
+    Action,
+    Mutation,
+    namespace
+  } from 'vuex-class'
 
-  @Prop() private pokemonList!: any[];
+  @Component
+  export default class PokemonList extends Vue {
+
+    /**
+     * Property that holds the whole pokemon list,
+     * readen in real time from the sate.
+     */
+    @State('pokemonList') pokemonList: any;
 
     /**
      * Vue.js hook, as soon as the component is created fetch some data.
+     * Dispatch an action to update the state with the list of the pokemon.
      */
     public created(){
-      axios.get('https://pokeapi.co/api/v2/pokemon/?limit=802')
-      .then((data) => {
-        this.pokemonList = data.data.results;
-      })
+        this.$store.dispatch('loadList');
     }
 
-}
+    /**
+     * Update the selected pokemon data by fetching base on the 
+     * clicked pokemon and putting the data in the state.
+     */
+    private changePokemon = (pokemonName: string) => {
+      this.$store.dispatch('loadPokemon', pokemonName);
+    }
+
+  }
+
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
+  .PokemonList{
+    height: 80vh;
+    overflow: auto;
+  }
 </style>

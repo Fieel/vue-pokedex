@@ -1,78 +1,59 @@
 <template>
+
   <div class="PokemonCard">
-    <input v-model="searchText" placeholder="PokèDex # or name">
-    <button @click="loadPokemon()">Search PokèMon</button>
-    <br>
-    <h1><span class="bold">Name: </span>{{ pokemonName }}</h1>
-    <img v-bind:src="pokemonSprite"/>
-    <p class="vertical-margin"><span>Weight: </span>{{ pokemonWeight }} kg</p>
-    <p class="vertical-margin"><span>Height: </span>{{ pokemonHeight }} ft</p>
-    <p class="vertical-margin" v-for="typeData in pokemonTypes" :key="typeData.slot">
-      {{ typeData.type.name }}
-    </p>
+    <div v-if="pokemonData">
+      <br>
+      <h1><span class="bold">Name: </span>{{ pokemonData.name }}</h1>
+      <img v-bind:src="pokemonData.sprites.back_default"/>
+      <p class="vertical-margin"><span>Weight: </span>{{ pokemonData.weight }} kg</p>
+      <p class="vertical-margin"><span>Height: </span>{{ pokemonData.height }} ft</p>
+      <p class="vertical-margin" v-for="typeData in pokemonData.types" :key="typeData.slot">
+        {{ typeData.type.name }}
+      </p>
+    </div>
+    <div v-else>
+      loading...
+    </div>
   </div>
+
 </template>
 
 <script lang="ts">
+
   import { Component, Prop, Vue, Emit } from 'vue-property-decorator';
   import axios from 'axios';
+  import {
+    State,
+    Getter,
+    Action,
+    Mutation,
+    namespace
+  } from 'vuex-class'
 
   /**
-   * PokemonCard main component
+   * PokemonCard main component, wil lstore all data about 
+   * a single pokèmon.
    */
   @Component
   export default class PokemonCard extends Vue {
 
     /**
-     * Search string
+     * Reading selected pokèmon data from State
      */
-    @Prop() searchText: String = "";
-    /**
-     * Pokèmon Data to display in the template
-     */
-    @Prop() pokemonData: any = { name: 'null', weight: 0, sprites: {}, types: []};
+    @State('pokemonData') pokemonData: any;
 
     /**
      * Vue.js hook, as soon as the component is created fetch some data.
+     * In this case dispatch an action that handles the http call.
      */
     public created(){
-      axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor((Math.random()*600)) )
-      .then(data => {
-        this.pokemonData = data.data;
-      })
+      this.$store.dispatch('loadPokemon', 1);
     }
 
-    /**
-     * Load a new pokemon given the Pokèdex number.
-     * Triggered on button press.
-     */
-    loadPokemon = () => {
-      axios.get('https://pokeapi.co/api/v2/pokemon/'+this.searchText)
-      .then(data => {
-        this.pokemonData = data.data;
-      })
-    }
-
-    // Computed data
-    get pokemonName() {
-      return this.pokemonData.name;
-    }
-    get pokemonSprite() {
-      return this.pokemonData.sprites.back_default;
-    }
-    get pokemonWeight() {
-      return this.pokemonData.weight;
-    }
-    get pokemonHeight() {
-      return this.pokemonData.height;
-    }
-    get pokemonTypes() {
-      return this.pokemonData.types;
-    }
   }
+
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .bold{
     font-weight: bold;
@@ -80,5 +61,8 @@
   .vertical-margin{
     margin-top: 2px;
     margin-bottom: 2px;
+  }
+  .PokemonCard{
+    margin: 10px;
   }
 </style>
