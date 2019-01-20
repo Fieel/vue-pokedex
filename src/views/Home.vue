@@ -1,17 +1,23 @@
 <template>
-  <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <PokemonCard />
+  <div class="columns">
+    <div class="column">
+      <PokemonCard />
+    </div>
+    <div class="column">
+      <PokemonList />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
   import PokemonCard from '@/components/PokemonCard.vue';
+  import PokemonList from '@/components/PokemonList.vue';
 
   @Component({
     components: {
       PokemonCard,
+      PokemonList,
     },
   })
   export default class Home extends Vue {}

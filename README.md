@@ -13,6 +13,10 @@ I'll be using the PokéAPI to build this web-based Pokédex: https://pokeapi.co/
 * Vuex docs: https://vuex.vuejs.org/guide/
 * PokéAPI docs: https://pokeapi.co/docs/
 
+## Design
+
+I'll be testing out the lightweight css framework Bulma: https://bulma.io
+
 ## Tests
 
 I'll try and write tests along the way, by default i'll use the tools provided by the VueCLI by default:

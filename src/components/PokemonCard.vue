@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <input v-model="searchText" placeholder="Enter PokèDex number!">
+  <div class="PokemonCard">
+    <input v-model="searchText" placeholder="PokèDex # or name">
     <button @click="loadPokemon()">Search PokèMon</button>
     <br>
     <h1><span class="bold">Name: </span>{{ pokemonName }}</h1>
