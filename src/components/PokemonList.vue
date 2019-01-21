@@ -17,13 +17,7 @@
 
   import { Component, Prop, Vue } from 'vue-property-decorator';
   import axios from 'axios';
-  import {
-    State,
-    Getter,
-    Action,
-    Mutation,
-    namespace
-  } from 'vuex-class'
+  import { State, Getter, Action, Mutation, namespace } from 'vuex-class';
 
   @Component
   export default class PokemonList extends Vue {
@@ -32,18 +26,18 @@
      * Property that holds the whole pokemon list,
      * readen in real time from the sate.
      */
-    @State('pokemonList') pokemonList: any;
+    @State('pokemonList') private pokemonList: any;
 
     /**
      * Vue.js hook, as soon as the component is created fetch some data.
      * Dispatch an action to update the state with the list of the pokemon.
      */
-    public created(){
+    public created() {
         this.$store.dispatch('loadList');
     }
 
     /**
-     * Update the selected pokemon data by fetching base on the 
+     * Update the selected pokemon data by fetching base on the
      * clicked pokemon and putting the data in the state.
      */
     private changePokemon = (pokemonName: string) => {

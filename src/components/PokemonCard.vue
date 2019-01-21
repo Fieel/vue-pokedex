@@ -22,16 +22,10 @@
 
   import { Component, Prop, Vue, Emit } from 'vue-property-decorator';
   import axios from 'axios';
-  import {
-    State,
-    Getter,
-    Action,
-    Mutation,
-    namespace
-  } from 'vuex-class'
+  import { State, Getter, Action, Mutation, namespace } from 'vuex-class';
 
   /**
-   * PokemonCard main component, wil lstore all data about 
+   * PokemonCard main component, wil lstore all data about
    * a single pokèmon.
    */
   @Component
@@ -40,13 +34,13 @@
     /**
      * Reading selected pokèmon data from State
      */
-    @State('pokemonData') pokemonData: any;
+    @State('pokemonData') private pokemonData: any;
 
     /**
      * Vue.js hook, as soon as the component is created fetch some data.
      * In this case dispatch an action that handles the http call.
      */
-    public created(){
+    public created() {
       this.$store.dispatch('loadPokemon', 1);
     }
 

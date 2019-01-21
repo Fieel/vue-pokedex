@@ -1,13 +1,13 @@
 import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
-import HelloWorld from '@/components/HelloWorld.vue';
+import PokemonCard from '@/components/PokemonCard.vue';
 
-describe('HelloWorld.vue', () => {
+describe('PokemonCard.vue', () => {
   it('renders props.msg when passed', () => {
-    const msg = 'new message';
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg },
+    const pokemonData = {};
+    const wrapper = shallowMount(PokemonCard, {
+      propsData: { pokemonData },
     });
-    expect(wrapper.text()).to.include(msg);
+    expect(wrapper.text()).to.include(pokemonData);
   });
 });

@@ -4,7 +4,7 @@ import axios from 'axios';
  * Interfaces with the PokèApi free Web API:
  * https://pokeapi.co/
  */
-export default class pokeApi {
+export default class PokeApi {
 
   /**
    * PokèApi base URL
