@@ -1,14 +1,23 @@
 <template>
 
-  <div v-if="pokemonList" class="PokemonList">
-    <ul>
-      <li
-      @click="changePokemon(item.name)"
-      v-for="(item, index) in pokemonList"
-      :key="item.name">
-        #{{ index }}: {{ item.name }}
-      </li>
-    </ul>
+  <div v-if="pokemonList && pokemonData" class="PokemonList">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>PokèDex #</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-row" v-bind:class="{ 'is-selected': item.name == pokemonData.name }"
+        @click="changePokemon(item.name)"
+        v-for="(item, index) in pokemonList"
+        :key="item.name" >
+          <td>{{ index+1 }}</td>
+          <td>{{ item.name }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
 </template>
@@ -27,6 +36,7 @@
      * readen in real time from the sate.
      */
     @State('pokemonList') private pokemonList: any;
+    @State('pokemonData') private pokemonData: any;
 
     /**
      * Vue.js hook, as soon as the component is created fetch some data.
@@ -50,7 +60,15 @@
 
 <style scoped lang="scss">
   .PokemonList{
-    height: 80vh;
+    height: 90vh;
     overflow: auto;
+  }
+  .table{
+    width: 100%;
+    padding: 10px;
+  }
+  .table-row :hover{
+    font-weight: bold;
+    cursor: crosshair;
   }
 </style>

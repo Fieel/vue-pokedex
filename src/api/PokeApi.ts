@@ -9,15 +9,37 @@ export default class PokeApi {
   /**
    * PokèApi base URL
    */
-  private baseURL: string = 'https://pokeapi.co/api/v2/pokemon/';
+  private baseURL: string = 'https://pokeapi.co/api/v2/';
+  private endpoints: any = {
+    pokemon: 'pokemon/',
+    pokemonSpecies: 'pokemon-species/',
+    evolutions: 'evolution-chain/',
+  };
 
   /**
    * Return data of pokèmon given a pokèdex number.
    * @param pokemonName Pokedex number of the pokèmon
    */
   public getSingle(pokemonName: string) {
-    return axios.get(this.baseURL + pokemonName)
+    return axios.get(this.baseURL + this.endpoints.pokemon + pokemonName)
       .then( (data: any) => {
+        return data.data;
+      });
+  }
+
+  public getAdditionalInfo(pokemonName: string) {
+    return axios.get(this.baseURL + this.endpoints.pokemonSpecies + pokemonName)
+      .then((data) => {
+        return data.data;
+      });
+  }
+
+    /**
+   * Return the list of all pokèmon with basic data to build a list
+   */
+  public getEvolutions(pokemonName: string) {
+    return axios.get(this.baseURL + this.endpoints.evolutions + pokemonName)
+      .then((data) => {
         return data.data;
       });
   }
@@ -26,7 +48,7 @@ export default class PokeApi {
    * Return the list of all pokèmon with basic data to build a list
    */
   public getList = () => {
-    return axios.get(this.baseURL + '?limit=802')
+    return axios.get(this.baseURL + this.endpoints.pokemon + '?limit=802')
       .then((data) => {
         return data.data.results;
       });
