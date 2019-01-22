@@ -42,6 +42,14 @@
             <p class="has-text-weight-semibold">Height</p>
             {{ pokemonData.height/10 }} m
           </div>
+          <div class="column">
+            <p class="has-text-weight-semibold">Type</p>
+            {{ pokemonAdditionalInfo.genera[2].genus }}
+          </div>
+          <div class="column">
+            <p class="has-text-weight-semibold">Generation</p>
+            {{ pokemonAdditionalInfo.generation.name.substring(pokemonAdditionalInfo.generation.name.lastIndexOf('-') + 1).toUpperCase() }}
+          </div>
         </div>
 
         <p class="subtitle has-text-weight-bold has-text-left">Stats</p>
