@@ -53,7 +53,7 @@
         </div>
 
         <p class="subtitle has-text-weight-bold has-text-left">Stats</p>
-        <div class="columns is-mobile">
+        <div class="columns">
           <div class="column"
             v-for="item in pokemonData.stats"
             :key="item.stat.name">
@@ -79,25 +79,9 @@
       </div>
     </div>
   </div>
-    <div v-else>
-      Loading...
+    <div v-else class="loading-wrapper">
+      <img src="../assets/pokeball-loading.gif" />
     </div>
-
-  <!-- <div class="PokemonCard">
-    <div v-if="pokemonData">
-      <br>
-      <h1><span class="bold">Name: </span>{{ pokemonData.name }}</h1>
-      <img v-bind:src="pokemonData.sprites.back_default"/>
-      <p class="vertical-margin"><span>Weight: </span>{{ pokemonData.weight/10 }} kg</p>
-      <p class="vertical-margin"><span>Height: </span>{{ pokemonData.height/10 }} m</p>
-      <p class="vertical-margin" v-for="typeData in pokemonData.types" :key="typeData.slot">
-        {{ typeData.type.name }}
-      </p>
-    </div>
-    <div v-else>
-      Loading...
-    </div>
-  </div> -->
 
 </template>
 
@@ -145,6 +129,10 @@
   .bold{
     font-weight: bold;
   }
+  .card{
+    height: 100%;
+    overflow: auto;
+  }
   .vertical-margin{
     margin-top: 2px;
     margin-bottom: 2px;
@@ -173,5 +161,11 @@
     line-height: 1.5;
     color: #fff;
     background-color: black;
+  }
+  .loading-wrapper{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>

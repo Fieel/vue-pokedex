@@ -1,6 +1,6 @@
 <template>
 
-  <div v-if="pokemonList && pokemonData" class="PokemonList">
+  <div v-if="pokemonList" class="PokemonList">
     <table class="table">
       <thead>
         <tr>
@@ -60,7 +60,7 @@
 
 <style scoped lang="scss">
   .PokemonList{
-    height: 90vh;
+    height: 100%;
     overflow: auto;
   }
   .table{
