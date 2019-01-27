@@ -9,7 +9,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="table-row" v-bind:class="{ 'is-selected': item.name == pokemonData.name }"
+        <tr class="table-row" v-bind:class="{ 'is-selected': pokemonData !== null && item.name == pokemonData.name }"
         @click="changePokemon(item.name)"
         v-for="(item, index) in pokemonList"
         :key="item.name" >
@@ -70,5 +70,8 @@
   .table-row :hover{
     font-weight: bold;
     cursor: crosshair;
+  }
+  .is-selected{
+    background-color: red !important;
   }
 </style>

@@ -1,16 +1,11 @@
 <template>
   <div id="app">
- 
-    <!-- <div id="nav">
-      <router-link to="/">PokèDex</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
 
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav id="nav" class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="/">
+          <div class="navbar-item" >
             <img src="./assets/logo.png" width="28" height="28">
-          </a>
+          </div>
       
           <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
@@ -21,12 +16,13 @@
       
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
+
             <router-link to="/" class="navbar-item">
               Pokèdex
             </router-link>
             
-            <router-link to="/about" class="navbar-item">
-              About
+            <router-link to="/berries" class="navbar-item">
+              Pokèberries
             </router-link>
       
             <a class="navbar-item" href="https://github.com/Fieel/vue-pokedex">
@@ -44,20 +40,20 @@
 </template>
 
 <style lang="scss">
-#app {
-  text-align: center;
-  min-height: 100vh;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+  #app {
+    text-align: center;
+  }
+  #nav {
+    // height: 10vh;    
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+    a {
+      font-weight: bold;
+      color: #2c3e50;
+      &.router-link-exact-active {
+        color: red;
+      }
     }
   }
-}
   ::-webkit-scrollbar {
     display: none;
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="card" v-if="pokemonData && pokemonAdditionalInfo">
+  <div class="card is-shadowless" v-if="pokemonData && pokemonAdditionalInfo">
     
       <div class="title is-inline-block">
         <br>

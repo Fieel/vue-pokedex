@@ -3,7 +3,6 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
-import './theming.css';
 // Importing Bulma CSS framework and making it available everywhere
 import './../node_modules/bulma/css/bulma.min.css';
 
