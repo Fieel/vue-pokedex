@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["about"],{abfb:function(e,n,t){"use strict";t.r(n);var r=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("h1",[e._v("TODO: Berries catalog")])},a=[],l=t("2877"),o={},s=Object(l["a"])(o,r,a,!1,null,null,null);s.options.__file="Berries.vue";n["default"]=s.exports}}]);
+//# sourceMappingURL=about.dfadc014.js.map
