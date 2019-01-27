@@ -4,7 +4,10 @@
     <table class="table">
       <thead>
         <tr>
-          <th>PokèDex #</th>
+          <th colspan="2">Complete Pokémon list</th>
+        </tr>
+        <tr>
+          <th>#</th>
           <th>Name</th>
         </tr>
       </thead>
@@ -52,6 +55,7 @@
      */
     private changePokemon = (pokemonName: string) => {
       this.$store.dispatch('loadPokemon', pokemonName);
+      window.scrollTo(0, 52);
     }
 
   }
@@ -61,6 +65,7 @@
 <style scoped lang="scss">
   .PokemonList{
     height: 100%;
+    max-height: 100vh;
     overflow: auto;
   }
   .table{

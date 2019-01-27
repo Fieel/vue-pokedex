@@ -119,6 +119,7 @@
      */
     private changePokemon = (pokemonName: string) => {
       this.$store.dispatch('loadPokemon', pokemonName);
+      window.scrollTo(0, 52);
     }
 
   }
