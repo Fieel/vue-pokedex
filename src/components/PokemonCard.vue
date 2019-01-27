@@ -33,28 +33,28 @@
         <p>{{ pokemonAdditionalInfo.flavor_text_entries[1].flavor_text }}</p>
         
         <p class="subtitle has-text-weight-bold has-text-left">Info</p>
-        <div class="columns is-mobile">
-          <div class="column">
+        <div class="columns is-mobile is-multiline">
+          <div class="column is-half-mobile">
             <p class="has-text-weight-semibold">Weight</p>
             {{ pokemonData.weight/10 }} kg
           </div>
-          <div class="column">
+          <div class="column is-half-mobile">
             <p class="has-text-weight-semibold">Height</p>
             {{ pokemonData.height/10 }} m
           </div>
-          <div class="column">
+          <div class="column is-half-mobile">
             <p class="has-text-weight-semibold">Type</p>
             {{ pokemonAdditionalInfo.genera[2].genus }}
           </div>
-          <div class="column">
+          <div class="column is-half-mobile">
             <p class="has-text-weight-semibold">Generation</p>
             {{ pokemonAdditionalInfo.generation.name.substring(pokemonAdditionalInfo.generation.name.lastIndexOf('-') + 1).toUpperCase() }}
           </div>
         </div>
 
         <p class="subtitle has-text-weight-bold has-text-left">Stats</p>
-        <div class="columns">
-          <div class="column"
+        <div class="columns is-mobile is-multiline">
+          <div class="column is-half-mobile"
             v-for="item in pokemonData.stats"
             :key="item.stat.name">
             <p class="has-text-weight-semibold">{{ item.stat.name }}</p>
@@ -64,9 +64,9 @@
         </div>
 
         <p class="subtitle has-text-weight-bold has-text-left">Evolutions</p>
-        <div class="columns">
+        <div class="columns is-mobile is-multiline">
           <div
-            class="column"
+            class="column is-one-third-mobile"
             v-for="item in pokemonEvolutionsData"
             :key="item.species_name">
             <a @click="changePokemon(item.species_name)">

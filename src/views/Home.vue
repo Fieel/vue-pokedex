@@ -1,5 +1,5 @@
 <template>
-  <div class="columns" style="height: 93vh">
+  <div class="columns" style="height: 93vh; margin: 0">
     <div class="column" style="border-right: 1px solid rgba(10,10,10,.1)">
       <PokemonCard />
     </div>
