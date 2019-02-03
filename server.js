@@ -4,6 +4,13 @@ var serveStatic = require('serve-static');
 
 app = express();
 
+var morgan = require('morgan')
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'))
+} else {
+    app.use(morgan('short'))
+}
+
 app.use(serveStatic(__dirname + "/dist"));
 
 var port = process.env.PORT || 5000;
