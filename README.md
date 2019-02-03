@@ -2,6 +2,18 @@
 
 This is a web-based Pokédex built for educational purposes, in fact this project will help me pick up and learn the Vue.js framework quickly.
 
+
+<img align="center" src="docs/vue-pokedex-screen-sizes.PNG">
+
+
+
+## Demo
+
+Heroku: https://vue-pokedex.herokuapp.com
+
+Private web server: http://pokedex.fieel.space/
+
+
 ## PokéAPI
 
 I'll be using the PokéAPI to build this web-based Pokédex: https://pokeapi.co/
@@ -38,6 +50,12 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
+```
+
+
+### Starts the express.js server, given that the /dist folder exists with production-ready files.
+```
+npm run start
 ```
 
 ### Run your tests
